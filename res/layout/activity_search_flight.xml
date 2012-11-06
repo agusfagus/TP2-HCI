@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <EditText
+        android:id="@+id/destin_city"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:hint="@string/destin_city" />
+    
+    <EditText
+        android:id="@+id/origin_city"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:hint="@string/origin_city" />
+
+    <EditText
+        android:id="@+id/depart_date"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:inputType="date" 
+        android:hint="@string/depart_date" />
+
+	
+    <Switch
+        android:id="@+id/one_way"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/one_way" />
+    
+    <EditText 
+        android:id="@+id/return_date"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:inputType="date" 
+        android:hint="@string/return_date" />
+    
+    <EditText 
+        android:id="@+id/passengers"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:inputType="date" 
+        android:hint="@string/passengers" />
+    
+    <Button
+        android:id="@+id/search"
+        android:layout_width="180dp"
+        android:background="#F23581"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="180dp"
+        android:text="@string/search" />
+
+</LinearLayout>
