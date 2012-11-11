@@ -11,10 +11,17 @@
     <string name="notifications">Notificaciones</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Fly Mobile</string>
+    
+    <!-- Action Bar -->
+    
+    <string name="review_menu">Opiniones</string>
+    <string name="search_menu">Vuelos</string>
+    <string name="notification_menu">Notificaciones</string>
+    <string name="menu_search">Buscar</string>
 
     <!-- Search Flight activity -->
 
-	<string name="title_activity_search_flight">Busca tu vuelo</string>
+    <string name="title_activity_search_flight">Busca tu vuelo</string>
     <string name="origin_city">Ciudad de partida</string>
     <string name="destin_city">Ciudad de destino</string>
     <string name="depart_date">Fecha de salida</string>
@@ -22,22 +29,23 @@
     <string name="return_date">Fecha de regreso</string>
     <string name="passengers">Fecha de regreso</string>
     <string name="search">Buscar</string>
-    
+
     <!-- Notification activity -->
-    
-	<string name="title_activity_notification">NotificationActivity</string>
-	<string name="flight_state">Cambio de estado de vuelo</string>
-	<string name="terminal">Cambio de terminal</string>
-	<string name="gate">Cambio de puerta de embarque</string>
+
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="flight_state">Cambio de estado de vuelo</string>
+    <string name="terminal">Cambio de terminal</string>
+    <string name="gate">Cambio de puerta de embarque</string>
     <string name="luggage_gate">Cambio de puerta de equipaje</string>
     <string name="departure_time">Cambio de horario de partida</string>
-    
+
     <!-- Review activity -->
-    
+
     <string name="title_activity_review">Envia tu opinion</string>
     <string name="airline">Aerolinea</string>
     <string name="flight_num">Numero de vuelo</string>
     <string name="satisfaction">Satisfaccion general</string>
     <string name="recommend">¿Recomendaria esta aerolinea?</string>
+    <string name="title_activity_main_fragment">MainFragment</string>
 
 </resources>

@@ -1,6 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_settings"
         android:title="@string/menu_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="100" 
         android:showAsAction="never" />
+    <!-- <item android:id="@+id/search_menu"
+        android:title="@string/search_menu" 
+        android:showAsAction="never" />
+    <item android:id="@+id/review_menu"
+        android:title="@string/review_menu"
+        android:showAsAction="never" />
+    <item android:id="@+id/noti_menu"
+        android:title="@string/noti_menu" 
+        android:showAsAction="never" />
+    <item android:id="@+id/search"
+          android:title="@string/menu_search"
+          android:icon="@drawable/ic_action_search"
+          android:showAsAction="always|collapseActionView"
+          android:actionViewClass="android.widget.SearchView" /> -->        
 </menu>

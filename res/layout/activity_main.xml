@@ -1,47 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:orientation="vertical" >
-
-    <!-- hola -->
+    tools:context=".MainActivity">
     
-    <ImageView
-        android:id="@+id/logoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/logo" />
-
-    <Button
-        android:id="@+id/flight_search"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:text="@string/flight_search"
-        android:onClick="toggleSearchFlight" />
-    
-    <Button
-        android:id="@+id/review"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:text="@string/review"
-        android:onClick="toggleReviews" />
-    
-    <Button
-        android:id="@+id/notifications"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:text="@string/notifications"
-        android:onClick="toggleNotifications" />
-
-</LinearLayout>
+</RelativeLayout>
