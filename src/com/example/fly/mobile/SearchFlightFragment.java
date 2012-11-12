@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.fly.R;
+
 
 public class SearchFlightFragment extends Fragment {
 
