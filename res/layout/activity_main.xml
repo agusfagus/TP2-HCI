@@ -6,5 +6,12 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     tools:context=".MainActivity">
-    
+
+    <!-- <fragment
+        android:name="com.example.fly.mobile.MainFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" /> -->
+
 </RelativeLayout>
