@@ -16,5 +16,4 @@ public class SearchFlightFragment extends Fragment {
 							Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.search_flight_fragment, container, false);
     }
-	
 }

@@ -1,32 +1,79 @@
 package com.example.fly.mobile;
 
-import android.content.Intent;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.EditText;
 
 import com.example.fly.R;
+import com.example.fly.api.ApiResultReceiver;
 import com.example.fly.api.ApiService;
+import com.example.fly.status.FlightStatus;
+import com.example.fly.status.NotificationIntent;
+import com.example.fly.utils.Alert;
+import com.example.fly.utils.AlertNotification;
+import com.example.fly.utils.ButtonListeners;
+import com.example.fly.utils.FavouriteFlight;
+import com.example.fly.utils.Favourites;
+import com.example.fly.utils.Flight;
+import com.example.fly.utils.FlightReview;
 import com.example.fly.utils.FragmentTabHandler;
 
 public class SplashActivity extends FragmentActivity {
-	
-	private String TAG = getClass().getSimpleName();
+
+	//private String TAG = getClass().getSimpleName();
+	private FragmentTabHandler tabHandler;
+	private ButtonListeners buttonListeners;
+	public static Favourites favourites = new Favourites();
+	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()) {
+
+		@Override
+    	protected void onReceiveResult(int resultCode, Bundle resultData) {
+    		super.onReceiveResult(resultCode, resultData);
+    		if (resultCode == ApiService.STATUS_OK) {
+
+    			String responseString = (String) resultData
+    					.getSerializable("return");
+    			JSONObject response = new JSONObject();
+				try {
+					response = new JSONObject(responseString);
+				} catch (JSONException e) {
+					Log.d("JSON", "Todo mal");
+				}
+    			callback.handleResponse(response);
+    			
+    		} else if (resultCode == ApiService.STATUS_CONNECTION_ERROR) {
+    			Log.d("Api Service", "Connection error.");
+    		} else {
+    			Log.d("Api Service", "Unknown error.");
+    		}
+    	}
+	};
 	
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	
 	public static final int MILLIS_TIME_TO_WAIT = 4000;
 	public static final int STOP = 0;
+	public static final String[] AIRLINES = new String[] {"IB", "AA", "LAN"};
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new FragmentTabHandler(this);
+        this.tabHandler = new FragmentTabHandler(this);
+        this.buttonListeners = new ButtonListeners(this);
+        NotificationIntent intent = new NotificationIntent(this);
+        startService(intent);
+    }
+    
+    public FragmentTabHandler getFragmentHandler() {
+    	return this.tabHandler;
     }
     
     @Override
@@ -47,39 +94,62 @@ public class SplashActivity extends FragmentActivity {
     	outState.putInt(STATE_SELECTED_NAVIGATION_ITEM, getActionBar().getSelectedNavigationIndex());
     }
     
-    public void testApi() {
-    	Intent intent = new Intent(Intent.ACTION_SYNC, null, this,
-				ApiService.class);
-        
-        intent.putExtra("method", "GetLanguages");
-        intent.putExtra("apiService", "Misc");
-        
-        intent.putExtra("receiver", new ResultReceiver(new Handler()) {
-			@Override
-			protected void onReceiveResult(int resultCode, Bundle resultData) {
-				super.onReceiveResult(resultCode, resultData);
-				if (resultCode == ApiService.STATUS_OK) {
-
-					Log.d(TAG, "OK");
-
-					String response = (String) resultData
-							.getSerializable("return");
-
-					handleResponse(response);
-					
-				} else if (resultCode == ApiService.STATUS_CONNECTION_ERROR) {
-					Log.d(TAG, "Connection error.");
-				} else {
-					Log.d(TAG, "Unknown error.");
-				}
-			}
-
-		});
-        startService(intent);
+    public ApiResultReceiver getReceiver() {
+    	return receiver;
     }
     
-    private void handleResponse(String response) {
-    	TextView view = (TextView) findViewById(R.id.textView1);
-    	view.setText(response);
+	public void getDeals (View view) {
+		EditText from = (EditText)findViewById(R.id.from);
+		buttonListeners.getDeals(from.getText().toString());
+	}
+	
+	public void submitReview (View view) {
+		FlightReview review = null;
+		try {
+			review = new FlightReview(this);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		buttonListeners.submitReview(review);
+	}
+    
+    public void addFavouriteFlight (View view) {
+    	EditText airline = (EditText) findViewById(R.id.fav_airline);
+    	EditText flightNum = (EditText) findViewById(R.id.fav_flight_number);
+    	buttonListeners.addFavouriteFlight(airline.getText().toString(), flightNum.getText().toString());
     }
+    
+    public void addFavouriteFlight (Flight flight, FlightStatus status) {
+    	FavouriteFlight newFav = new FavouriteFlight(flight, status);
+    	newFav.addAlert(new Alert() {
+
+			public boolean changedStatus(FlightStatus oldStatus,
+					FlightStatus newStatus) {
+				return !oldStatus.getStatus().equals(newStatus.getStatus());
+			}
+
+			public AlertNotification getNotification(FlightStatus newStatus) {
+				return new AlertNotification("El nuevo estado es: " + newStatus.getStatus());
+			}
+    		
+    	});
+    	favourites.put(newFav);
+    }
+	
+	public void toggleSearchFlights(View view) {
+		selectFragment(0);
+	}
+	
+	public void toggleReviews(View view) {
+		selectFragment(1);
+	}
+	
+	public void toggleNotifications(View view) {
+		selectFragment(2);
+	}
+	
+	private void selectFragment(int index) {
+		buttonListeners.selectFragment(this.tabHandler, getActionBar().getTabAt(index));
+	}
 }

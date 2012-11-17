@@ -14,19 +14,4 @@ public class ReviewFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.review_fragment, container, false);
     }
-    
-    /*public void callMethod(View view) {
-    	TextView result = (TextView) findViewById(R.id.result);
-    	ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-		if (networkInfo != null && networkInfo.isConnected()) {
-			Intent intent = new Intent(this, ApiService.class);
-			ApiService handler = new ApiService("Misc", "GetLanguages");
-			LocalBinder binder = (LocalBinder) handler.onBind(intent);
-			handler = binder.getService();
-	    	result.setText(handler.getResponse(null));
-		} else {
-			result.setText("No network connection available.");
-		}
-    }*/
 }

@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:text="@string/flight_search"
-        android:onClick="toggleSearchFlight" />
+        android:onClick="toggleSearchFlights" />
     
     <Button
         android:id="@+id/review"

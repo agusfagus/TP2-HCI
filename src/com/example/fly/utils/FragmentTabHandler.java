@@ -12,6 +12,7 @@ import com.example.fly.mobile.MainFragment;
 import com.example.fly.mobile.NotificationFragment;
 import com.example.fly.mobile.ReviewFragment;
 import com.example.fly.mobile.SearchFlightFragment;
+import com.example.fly.mobile.SplashActivity;
 
 public class FragmentTabHandler implements ActionBar.TabListener {
 	
@@ -23,10 +24,10 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 	
 	private FragmentContainer mainFragment = new FragmentContainer(R.drawable.ic_launcher_home, new MainFragment());
 	
-	private Activity contextActivity;
+	private SplashActivity contextActivity;
 	
 	public FragmentTabHandler(Activity contextActivity) {
-		this.contextActivity = contextActivity;
+		this.contextActivity = (SplashActivity)contextActivity;
 		initialize();
 		toggle(mainFragment.instance);
 	}
@@ -35,7 +36,8 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 		// Get fragment's instance
-    	toggle(fragmentList[tab.getPosition()].instance);
+		Fragment fragmentSelected = fragmentList[tab.getPosition()].instance;
+    	toggle(fragmentSelected);
 	}
 
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) { }
@@ -47,7 +49,7 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 			actionBar.addTab(actionBar.newTab().setText(fragmentList[i].text).setTabListener(this));
 	}
 	
-	private void toggle(Fragment newFragment) {
+	public void toggle(Fragment newFragment) {
     	FragmentManager fManager = this.contextActivity.getFragmentManager();
     	fManager.beginTransaction().replace(R.id.container, newFragment).commit();
     }

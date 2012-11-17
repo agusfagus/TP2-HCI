@@ -22,17 +22,15 @@
     <!-- Search Flight activity -->
 
     <string name="title_activity_search_flight">Busca tu vuelo</string>
-    <string name="origin_city">Ciudad de partida</string>
-    <string name="destin_city">Ciudad de destino</string>
-    <string name="depart_date">Fecha de salida</string>
-    <string name="one_way">Solo ida</string>
-    <string name="return_date">Fecha de regreso</string>
-    <string name="passengers">Fecha de regreso</string>
-    <string name="search">Buscar</string>
+    <string name="edit_from">Ciudad de origen</string>
+    <string name="search_deals">Buscar</string>
 
     <!-- Notification activity -->
 
     <string name="title_activity_notification">NotificationActivity</string>
+    <string name="fav_airline_tag">Ingrese el nombre de la aerolínea</string>
+    <string name="fav_number_tag">Ingrese el número de vuelo</string>
+    <string name="fav_button">Agregar a favoritos</string>
     <string name="flight_state">Cambio de estado de vuelo</string>
     <string name="terminal">Cambio de terminal</string>
     <string name="gate">Cambio de puerta de embarque</string>
@@ -44,7 +42,12 @@
     <string name="title_activity_review">Envia tu opinion</string>
     <string name="airline">Aerolinea</string>
     <string name="flight_num">Numero de vuelo</string>
-    <string name="satisfaction">Satisfaccion general</string>
+    <string name="friendliness">Trato</string>
+    <string name="food">Comida</string>
+    <string name="punctuality">Puntualidad</string>
+    <string name="mileage">Programa de millas</string>
+    <string name="comfort">Comfort general</string>
+    <string name="quality_price">Relación precio/calidad</string>
     <string name="recommend">¿Recomendaria esta aerolinea?</string>
     <string name="title_activity_main_fragment">MainFragment</string>
 

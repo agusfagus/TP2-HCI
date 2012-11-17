@@ -3,46 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-      <Switch
-        android:id="@+id/flight_state"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/flight_state" />
-      
-      <Switch
-        android:id="@+id/terminal"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/terminal" />
     
-      <Switch
-        android:id="@+id/gate"
+    <TextView
+        android:id="@+id/fav_airline_tag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/gate" />
-      
-      <Switch
-        android:id="@+id/luggage_gate"
+        android:text="@string/fav_airline_tag" />
+
+    <EditText
+        android:id="@+id/fav_airline"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/luggage_gate" />
-      
-      <Switch
-        android:id="@+id/departure_time"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+    
+    <TextView
+        android:id="@+id/fav_number_tag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/departure_time" />
-      
+        android:text="@string/fav_number_tag" />
+
+    <EditText
+        android:id="@+id/fav_flight_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/fav_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fav_button" 
+        android:onClick="addFavouriteFlight"/>
       
 </LinearLayout>
