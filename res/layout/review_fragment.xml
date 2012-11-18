@@ -54,12 +54,7 @@
 	        android:text="@string/friendliness"/>		
 	    <RatingBar
 	        android:id="@+id/friendliness"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:layout_marginTop="5dp"
-	        android:numStars="5"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	    
 	    <TextView 
 	        android:id="@+id/food_tag"
@@ -72,12 +67,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/food"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:layout_marginTop="5dp"
-	        android:numStars="5"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	    
 	    <TextView 
 	        android:id="@+id/punctuality_tag"
@@ -90,12 +80,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/punctuality"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
-	        android:layout_gravity="center"
-	        android:numStars="5"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	    
 	    <TextView 
 	        android:id="@+id/mileage_tag"
@@ -108,12 +93,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/mileage"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
-	        android:layout_gravity="center"
-	        android:numStars="5"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	    
 	    <TextView 
 	        android:id="@+id/comfort_tag"
@@ -126,12 +106,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/comfort"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
-	        android:layout_gravity="center"
-	        android:numStars="5"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	    
 	    <TextView 
 	        android:id="@+id/quality_price_tag"
@@ -144,13 +119,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/quality_price"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="5dp"
-	        android:layout_gravity="center"
-	        android:numStars="5"
-	        android:rating="1"
-	        android:stepSize="0.5" />
+	        style="@style/rating_style" />
 	
 	    <Switch
 	        android:id="@+id/recommend"
@@ -159,16 +128,14 @@
 	        android:layout_marginTop="@dimen/review_margin"
 	        android:layout_gravity="center"
 	        android:hint="@string/recommend"/>
-	    
+				    
 	     <Button
 	        android:id="@+id/review"
-	        android:layout_width="250dp"
-	        android:layout_height="wrap_content"
 	        android:layout_marginTop="20dp"
 	        android:layout_marginBottom="@dimen/review_margin"
-	        android:layout_gravity="center"
 	        android:onClick="submitReview"
-	        android:text="@string/review" />
+	        android:text="@string/review"
+	        style="@style/button_style" />
 	
 	</LinearLayout>
 </ScrollView>
