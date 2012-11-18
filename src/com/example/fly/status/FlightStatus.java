@@ -34,6 +34,34 @@ public class FlightStatus {
 		return this.status;
 	}
 	
+	public String getDepartureTime() {
+		return this.departure.getTime();
+	}
+
+	public String getArrivalTime() {
+		return this.arrival.getTime();
+	}
+	
+	public String getDepartureTerminal() {
+		return this.departure.getTerminal();
+	}
+	
+	public String getArrivalTerminal() {
+		return this.arrival.getTerminal();
+	}
+	
+	public String getArrivalGate() {
+		return this.arrival.getGate();
+	}
+	
+	public String getDepartureGate() {
+		return this.departure.getGate();
+	}
+	
+	public String getBaggageGate() {
+		return this.arrival.getBaggageGate();
+	}
+	
 	public String toString() {
 		return json.toString();
 	}

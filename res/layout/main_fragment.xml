@@ -14,32 +14,29 @@
         android:layout_marginTop="50dp"
         android:contentDescription="@string/logo"
         android:src="@drawable/logo" />
+<!-- 	android:layout_marginTop="60dp" 
+		android:layout_gravity="center"
+		android:layout_width="250dp"-->
 
     <Button
         android:id="@+id/flight_search"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="60dp" 
+        android:onClick="toggleSearchFlights"
         android:text="@string/flight_search"
-        android:onClick="toggleSearchFlights" />
+        style="@style/button_style" />
     
     <Button
         android:id="@+id/review"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="0dp"
         android:text="@string/review"
-        android:onClick="toggleReviews" />
+        android:onClick="toggleReviews"
+        style="@style/button_style" />
     
     <Button
         android:id="@+id/notifications"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="0dp"
         android:text="@string/notifications"
-        android:onClick="toggleNotifications" />
+        android:onClick="toggleNotifications"
+        style="@style/button_style" />
 
 </LinearLayout>

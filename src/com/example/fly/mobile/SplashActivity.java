@@ -14,14 +14,10 @@ import android.widget.EditText;
 import com.example.fly.R;
 import com.example.fly.api.ApiResultReceiver;
 import com.example.fly.api.ApiService;
-import com.example.fly.status.FlightStatus;
 import com.example.fly.status.NotificationIntent;
-import com.example.fly.utils.Alert;
-import com.example.fly.utils.AlertNotification;
 import com.example.fly.utils.ButtonListeners;
 import com.example.fly.utils.FavouriteFlight;
 import com.example.fly.utils.Favourites;
-import com.example.fly.utils.Flight;
 import com.example.fly.utils.FlightReview;
 import com.example.fly.utils.FragmentTabHandler;
 
@@ -60,7 +56,6 @@ public class SplashActivity extends FragmentActivity {
 	
 	public static final int MILLIS_TIME_TO_WAIT = 4000;
 	public static final int STOP = 0;
-	public static final String[] AIRLINES = new String[] {"IB", "AA", "LAN"};
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,20 +115,7 @@ public class SplashActivity extends FragmentActivity {
     	buttonListeners.addFavouriteFlight(airline.getText().toString(), flightNum.getText().toString());
     }
     
-    public void addFavouriteFlight (Flight flight, FlightStatus status) {
-    	FavouriteFlight newFav = new FavouriteFlight(flight, status);
-    	newFav.addAlert(new Alert() {
-
-			public boolean changedStatus(FlightStatus oldStatus,
-					FlightStatus newStatus) {
-				return !oldStatus.getStatus().equals(newStatus.getStatus());
-			}
-
-			public AlertNotification getNotification(FlightStatus newStatus) {
-				return new AlertNotification("El nuevo estado es: " + newStatus.getStatus());
-			}
-    		
-    	});
+    public void addFavouriteFlight (FavouriteFlight newFav) {
     	favourites.put(newFav);
     }
 	

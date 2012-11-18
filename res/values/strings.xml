@@ -28,14 +28,18 @@
     <!-- Notification activity -->
 
     <string name="title_activity_notification">NotificationActivity</string>
-    <string name="fav_airline_tag">Ingrese el nombre de la aerolínea</string>
-    <string name="fav_number_tag">Ingrese el número de vuelo</string>
+    <string name="fav_airline_tag">Aerolínea</string>
+    <string name="fav_number_tag">Número de vuelo</string>
     <string name="fav_button">Agregar a favoritos</string>
     <string name="flight_state">Cambio de estado de vuelo</string>
-    <string name="terminal">Cambio de terminal</string>
-    <string name="gate">Cambio de puerta de embarque</string>
-    <string name="luggage_gate">Cambio de puerta de equipaje</string>
-    <string name="departure_time">Cambio de horario de partida</string>
+    <string name="departure_terminal">Cambio terminal de embarque</string>
+    <string name="arrival_terminal">Cambio terminal de arribo</string>
+    <string name="departure_gate">Cambio puerta de embarque</string>
+    <string name="arrival_gate">Cambio puerta de arriba</string>
+    <string name="baggage_gate">Cambio puerta de equipaje</string>
+    <string name="departure_time">Cambio horario de partida</string>
+    <string name="arrival_time">Cambio horario de arribo</string>
+    <string name="which_notifications">¿Qué notificaciones desearía recibir?</string>
 
     <!-- Review activity -->
 

@@ -12,17 +12,27 @@ public class Airport {
 	private String timezone;
 	private String terminal;
 	private String gate;
+	private String baggageGate;
 	
-	public Airport(JSONObject json) throws JSONException {
-		try {
-			this.id = json.getString("id");
-			this.description = json.getString("description");
-			this.timezone = json.getString("timezone");
-			this.terminal = json.getString("terminal");
-			this.gate = json.getString("gate");
-		} catch (JSONException e) {
-			Log.d("error", "airport");
-		}
+	public Airport(JSONObject json) {
+		this.id = json.optString("id");
+		this.description = json.optString("description");
+		this.timezone = json.optString("timezone");
+		this.terminal = json.optString("terminal");
+		this.gate = json.optString("gate");
+		this.baggageGate = json.optString("baggageGate");
+	}
+	
+	public String getGate() {
+		return this.gate;
+	}
+	
+	public String getTerminal() {
+		return this.terminal;
+	}
+	
+	public String getBaggageGate() {
+		return this.baggageGate;
 	}
 	
 }

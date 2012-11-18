@@ -10,9 +10,17 @@ import org.json.JSONObject;
 
 import android.app.ActionBar.Tab;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.Switch;
 
 import com.example.fly.R;
+import com.example.fly.alerts.ArrivalGateAlert;
+import com.example.fly.alerts.ArrivalTerminalAlert;
+import com.example.fly.alerts.ArrivalTimeAlert;
+import com.example.fly.alerts.BaggageGateAlert;
+import com.example.fly.alerts.DepartureGateAlert;
+import com.example.fly.alerts.DepartureTerminalAlert;
+import com.example.fly.alerts.DepartureTimeAlert;
+import com.example.fly.alerts.StatusAlert;
 import com.example.fly.api.ApiIntent;
 import com.example.fly.mobile.DisplayDealsFragment;
 import com.example.fly.mobile.SplashActivity;
@@ -53,7 +61,7 @@ public class ButtonListeners {
 
 			public void handleResponse(JSONObject response) {
 				context.toggleSearchFlights(null);
-				TextView prueba = (TextView) context.findViewById(R.id.prueba);
+				//TextView prueba = (TextView) context.findViewById(R.id.prueba);
 //				prueba.setText(response);
 			}
 		};
@@ -75,7 +83,9 @@ public class ButtonListeners {
 				} catch (JSONException e) {
 					Log.d("json", "invalid status");
 				}
-				context.addFavouriteFlight(favFlight, initialFlightStatus);
+				FavouriteFlight flight = new FavouriteFlight(favFlight, initialFlightStatus);
+				getAlerts(flight);
+				context.addFavouriteFlight(flight);
 			}
 		};
 		context.getReceiver().setCallBack(callback);
@@ -83,5 +93,24 @@ public class ButtonListeners {
 				this.context.getReceiver(), this.context);
 		intent.setParams(favFlight.getParams());
 		context.startService(intent);
+	}
+	
+	private void getAlerts(FavouriteFlight flight) {
+		if ( ((Switch) context.findViewById(R.id.flight_state)).isChecked() )
+			flight.addAlert(new StatusAlert());
+		if ( ((Switch) context.findViewById(R.id.departure_terminal)).isChecked() )
+			flight.addAlert(new DepartureTerminalAlert());
+		if ( ((Switch) context.findViewById(R.id.arrival_terminal)).isChecked() )
+			flight.addAlert(new ArrivalTerminalAlert());
+		if ( ((Switch) context.findViewById(R.id.departure_gate)).isChecked() )
+			flight.addAlert(new DepartureGateAlert());
+		if ( ((Switch) context.findViewById(R.id.arrival_gate)).isChecked() )
+			flight.addAlert(new ArrivalGateAlert());
+		if ( ((Switch) context.findViewById(R.id.baggage_gate)).isChecked() )
+			flight.addAlert(new BaggageGateAlert());
+		if ( ((Switch) context.findViewById(R.id.departure_time)).isChecked() )
+			flight.addAlert(new DepartureTimeAlert());
+		if ( ((Switch) context.findViewById(R.id.arrival_time)).isChecked() )
+			flight.addAlert(new ArrivalTimeAlert());
 	}
 }

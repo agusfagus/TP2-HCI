@@ -7,7 +7,7 @@ import com.example.fly.status.FlightStatus;
 
 public class FavouriteFlight {
 
-	Flight flight;
+	private Flight flight;
 	private FlightStatus currentStatus;
 	private List<Alert> alerts = new LinkedList<Alert>();
 	

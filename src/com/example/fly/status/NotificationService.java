@@ -66,14 +66,14 @@ public class NotificationService extends IntentService {
 			try {
 				synchronized (this) {
 					wait(interval);
-					Log.d("status", favourites.toString());
+					/*Log.d("status", favourites.toString());
 					if (this.favourites.isEmpty())
 						Log.d("service", "vacio");
 					else
-						Log.d("service", "tiene algo");
+						Log.d("service", "tiene algo");*/
 					for (FavouriteFlight f : this.favourites.getList()) {
 						synchronized (this) {
-							Log.d("service", f.getFlight().getNumber());
+							//Log.d("service", f.getFlight().getNumber());
 							checkStatus(f);
 						}
 					}
@@ -97,6 +97,7 @@ public class NotificationService extends IntentService {
 					Log.d("notif", "no hay notifs");
 				for (AlertNotification n : notifs)
 					Log.d("notif", n.toString());
+//					n.displayNotification();
 			}
 		};
 		receiver.setCallBack(callback);

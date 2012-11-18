@@ -1,9 +1,6 @@
 package com.example.fly.status;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.util.Log;
 
 public class Airline {
 
@@ -11,14 +8,10 @@ public class Airline {
 	private String name;
 	private String logo;
 	
-	public Airline(JSONObject json) throws JSONException {
-		try {
-			this.id = json.getString("id");
-			this.name = json.getString("name");
-			this.logo = json.getString("logo");
-		} catch (JSONException e) {
-			Log.d("error", "airline");
-		}
+	public Airline(JSONObject json) {
+		this.id = json.optString("id");
+		this.name = json.optString("name");
+		this.logo = json.optString("logo");
 	}
 	
 }
