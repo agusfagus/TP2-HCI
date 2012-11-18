@@ -9,6 +9,7 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="rating_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -16,6 +17,13 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:numStars">5</item>
         <item name="android:stepSize">0.5</item>
+
+    <style name="button_style_large">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+
     </style>
 
 </resources>
