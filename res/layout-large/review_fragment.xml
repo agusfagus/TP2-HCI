@@ -1,0 +1,174 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+	    
+	    <TextView 
+	        android:id="@+id/airline_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/airline" />
+	    
+		<AutoCompleteTextView
+	        android:id="@+id/airline"
+	        android:layout_marginTop="5dp"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"	        
+	        android:hint="@string/airline" >
+	        
+	        <requestFocus />
+		</AutoCompleteTextView>
+	    
+		<TextView 
+	        android:id="@+id/flight_num_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/flight_num" />
+		
+	    <EditText
+	        android:id="@+id/flight_num"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_gravity="center"
+	        android:hint="@string/flight_num" />
+	    
+	    <TextView 
+	        android:id="@+id/friendliness_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/friendliness"/>		
+	    <RatingBar
+	        android:id="@+id/friendliness"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="5dp"
+	        android:numStars="5"
+	        android:stepSize="0.5" />
+	    
+	    <TextView 
+	        android:id="@+id/food_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/food"/>
+	
+	    <RatingBar
+	        android:id="@+id/food"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="5dp"
+	        android:numStars="5"
+	        android:stepSize="0.5" />
+	    
+	    <TextView 
+	        android:id="@+id/punctuality_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/punctuality"/>
+	
+	    <RatingBar
+	        android:id="@+id/punctuality"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_gravity="center"
+	        android:numStars="5"
+	        android:stepSize="0.5" />
+	    
+	    <TextView 
+	        android:id="@+id/mileage_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/mileage"/>
+	
+	    <RatingBar
+	        android:id="@+id/mileage"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_gravity="center"
+	        android:numStars="5"
+	        android:stepSize="0.5" />
+	    
+	    <TextView 
+	        android:id="@+id/comfort_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/comfort"/>
+	
+	    <RatingBar
+	        android:id="@+id/comfort"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_gravity="center"
+	        android:numStars="5"
+	        android:stepSize="0.5" />
+	    
+	    <TextView 
+	        android:id="@+id/quality_price_tag"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:textSize="20dp"
+	        android:text="@string/quality_price"/>
+	
+	    <RatingBar
+	        android:id="@+id/quality_price"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_gravity="center"
+	        android:numStars="5"
+	        android:rating="1"
+	        android:stepSize="0.5" />
+	
+	    <Switch
+	        android:id="@+id/recommend"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="@dimen/review_margin"
+	        android:layout_gravity="center"
+	        android:hint="@string/recommend"/>
+	    
+	     <Button
+	        android:id="@+id/review"
+	        android:layout_width="250dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="20dp"
+	        android:layout_marginBottom="@dimen/review_margin"
+	        android:layout_gravity="center"
+	        android:onClick="submitReview"
+	        android:text="@string/review" />
+	
+	</LinearLayout>
+</ScrollView>

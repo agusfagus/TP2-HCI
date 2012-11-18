@@ -9,5 +9,11 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="button_style_large">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 </resources>
