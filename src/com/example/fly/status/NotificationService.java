@@ -72,13 +72,15 @@ public class NotificationService extends IntentService {
 					else
 						Log.d("service", "tiene algo");*/
 					for (FavouriteFlight f : this.favourites.getList()) {
-						synchronized (this) {
-							//Log.d("service", f.getFlight().getNumber());
+						
+							Log.d("service", f.getFlight().getNumber());
 							checkStatus(f);
-						}
+							wait(1000);
 					}
 				}
-			} catch (Exception e) { }
+			} catch (Exception e) { 
+				
+			}
 		}
 	}
 	
@@ -94,7 +96,7 @@ public class NotificationService extends IntentService {
 				}
 				List<AlertNotification> notifs = flight.check(currentFlightStatus);
 				if (notifs.isEmpty())
-					Log.d("notif", "no hay notifs");
+					Log.d("notif", "no hay notifs" + flight.getFlight().getNumber());
 				for (AlertNotification n : notifs)
 					n.notifyAlert();
 			}
@@ -105,5 +107,4 @@ public class NotificationService extends IntentService {
 		intent.setParams(flight.getFlight().getParams());
 		startService(intent);
 	}
-
 }
