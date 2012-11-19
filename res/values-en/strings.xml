@@ -3,6 +3,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="app_name">fly mobile</string>
     <string name="logo">Logo Fly!</string>
+    <string name="deals_tab">Deals</string>
+    <string name="reviews_tab">Reviews</string>
+    <string name="notifications_tab">Notifications</string>
 
     <!-- Main activity -->
 

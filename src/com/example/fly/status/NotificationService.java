@@ -11,11 +11,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import com.example.fly.alerts.AlertNotification;
 import com.example.fly.api.ApiIntent;
 import com.example.fly.api.ApiResultReceiver;
 import com.example.fly.api.ApiService;
 import com.example.fly.mobile.SplashActivity;
-import com.example.fly.utils.AlertNotification;
 import com.example.fly.utils.CallBack;
 import com.example.fly.utils.FavouriteFlight;
 import com.example.fly.utils.Favourites;
@@ -96,8 +96,7 @@ public class NotificationService extends IntentService {
 				if (notifs.isEmpty())
 					Log.d("notif", "no hay notifs");
 				for (AlertNotification n : notifs)
-					Log.d("notif", n.toString());
-//					n.displayNotification();
+					n.notifyAlert();
 			}
 		};
 		receiver.setCallBack(callback);

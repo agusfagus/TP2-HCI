@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.fly.R;
+import com.example.fly.alerts.AlertNotification;
 import com.example.fly.api.ApiResultReceiver;
 import com.example.fly.api.ApiService;
 import com.example.fly.status.NotificationIntent;
@@ -63,8 +64,10 @@ public class SplashActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         this.tabHandler = new FragmentTabHandler(this);
         this.buttonListeners = new ButtonListeners(this);
+        AlertNotification.context = this;
         NotificationIntent intent = new NotificationIntent(this);
         startService(intent);
+      //  new Initializer(this);
     }
     
     public FragmentTabHandler getFragmentHandler() {

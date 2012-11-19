@@ -17,9 +17,9 @@ import com.example.fly.mobile.SplashActivity;
 public class FragmentTabHandler implements ActionBar.TabListener {
 	
 	private FragmentContainer fragmentList[] = {
-			new FragmentContainer("Vuelos", new SearchFlightFragment()),
-			new FragmentContainer("Opiniones", new ReviewFragment()),
-			new FragmentContainer("Notificaciones", new NotificationFragment())
+			new FragmentContainer(R.string.deals_tab, new SearchFlightFragment()),
+			new FragmentContainer(R.string.reviews_tab, new ReviewFragment()),
+			new FragmentContainer(R.string.notifications_tab, new NotificationFragment())
 	};
 	
 	private FragmentContainer mainFragment = new FragmentContainer(R.drawable.ic_launcher_home, new MainFragment());
@@ -46,7 +46,7 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 		final ActionBar actionBar = this.contextActivity.getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		for (int i = 0 ; i < fragmentList.length ; i++)
-			actionBar.addTab(actionBar.newTab().setText(fragmentList[i].text).setTabListener(this));
+			actionBar.addTab(actionBar.newTab().setText(fragmentList[i].stringId).setTabListener(this));
 	}
 	
 	public void toggle(Fragment newFragment) {
@@ -57,22 +57,15 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 	private class FragmentContainer {
 		
 		private Fragment instance;
-		private String text;
-		@SuppressWarnings("unused")
-		private int icon;
+		private int stringId;
 		
 		public FragmentContainer(Fragment inst) {
 			this.instance = inst;
 		}
 		
-		public FragmentContainer(String text, Fragment inst) {
+		public FragmentContainer(int id, Fragment inst) {
 			this(inst);
-			this.text = text;
-		}
-		
-		public FragmentContainer(int icon, Fragment inst) {
-			this(inst);
-			this.icon = icon;
+			this.stringId = id;
 		}
 	}
 }

@@ -3,6 +3,8 @@ package com.example.fly.utils;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.example.fly.alerts.Alert;
+import com.example.fly.alerts.AlertNotification;
 import com.example.fly.status.FlightStatus;
 
 public class FavouriteFlight {

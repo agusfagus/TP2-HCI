@@ -1,4 +1,4 @@
-package com.example.fly.utils;
+package com.example.fly.alerts;
 
 import com.example.fly.status.FlightStatus;
 
