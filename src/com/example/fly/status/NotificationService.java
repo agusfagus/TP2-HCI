@@ -66,20 +66,13 @@ public class NotificationService extends IntentService {
 			try {
 				synchronized (this) {
 					wait(interval);
-					/*Log.d("status", favourites.toString());
-					if (this.favourites.isEmpty())
-						Log.d("service", "vacio");
-					else
-						Log.d("service", "tiene algo");*/
 					for (FavouriteFlight f : this.favourites.getList()) {
-						
 							Log.d("service", f.getFlight().getNumber());
 							checkStatus(f);
 							wait(1000);
 					}
 				}
 			} catch (Exception e) { 
-				
 			}
 		}
 	}

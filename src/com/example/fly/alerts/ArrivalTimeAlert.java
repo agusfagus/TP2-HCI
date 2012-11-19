@@ -12,4 +12,7 @@ public class ArrivalTimeAlert implements Alert {
 		return new AlertNotification("El nuevo horario de llegada es: " + newStatus.getArrivalTime());
 	}
 
+	public String getName() {
+		return "ArrivalTime";
+	}
 }

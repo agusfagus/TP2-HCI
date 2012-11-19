@@ -11,5 +11,9 @@ public class ArrivalTerminalAlert implements Alert {
 	public AlertNotification getNotification(FlightStatus newStatus) {
 		return new AlertNotification("La nueva terminal de arribo es la: " + newStatus.getArrivalTerminal());
 	}
+	
+	public String getName() {
+		return "ArrivalTerminal";
+	}
 
 }

@@ -21,7 +21,8 @@
 	        android:layout_marginTop="5dp"
 	        android:layout_width="250dp"
 	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"	        
+	        android:layout_gravity="center"	
+	        android:inputType="text"        
 	        android:hint="@string/airline" >
 	        
 	        <requestFocus />
@@ -42,6 +43,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dp"
 	        android:layout_gravity="center"
+	        android:inputType="number"
 	        android:hint="@string/flight_num" />
 	    
 	    <TextView 
@@ -67,7 +69,7 @@
 	
 	    <RatingBar
 	        android:id="@+id/food"
-	        style="@style/rating_style" />
+	        style="@style/rating_style"/>
 	    
 	    <TextView 
 	        android:id="@+id/punctuality_tag"

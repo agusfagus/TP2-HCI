@@ -8,4 +8,5 @@ public interface Alert {
 	
 	public AlertNotification getNotification(FlightStatus newStatus);
 	
+	public String getName();
 }

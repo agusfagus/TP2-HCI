@@ -9,7 +9,7 @@
 
     <!-- Main activity -->
 
-    <string name="flight_search">Busca tu vuelo</string>
+    <string name="flight_search">Promociones</string>
     <string name="review">Envia tu opinion</string>
     <string name="notifications">Notificaciones</string>
     <string name="menu_settings">Settings</string>
@@ -43,6 +43,8 @@
     <string name="departure_time">Cambio horario de partida</string>
     <string name="arrival_time">Cambio horario de arribo</string>
     <string name="which_notifications">¿Qué notificaciones desearía recibir?</string>
+    <string name="fav_success">Vuelo agregado correctamente</string>
+    <string name="fav_error">Datos del vuelo incorrectos. Intente nuevamente</string>
 
     <!-- Review activity -->
 
@@ -56,6 +58,8 @@
     <string name="comfort">Comfort general</string>
     <string name="quality_price">Relación precio/calidad</string>
     <string name="recommend">¿Recomendaria esta aerolinea?</string>
+    <string name="review_success">La opinion ha sido enviada</string>
+    <string name="review_error">Datos del vuelo inválidos. Intente nuevamente</string>
     <string name="title_activity_main_fragment">MainFragment</string>
 
 </resources>

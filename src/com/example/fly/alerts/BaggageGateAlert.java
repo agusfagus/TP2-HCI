@@ -12,4 +12,7 @@ public class BaggageGateAlert implements Alert {
 		return new AlertNotification("La nueva puerta de recolección de equipaje es: " + newStatus.getBaggageGate());
 	}
 
+	public String getName() {
+		return "BaggageGate";
+	}
 }

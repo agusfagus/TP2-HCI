@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ActionBar.Tab;
 import android.util.Log;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.fly.R;
 import com.example.fly.alerts.ArrivalGateAlert;
@@ -60,9 +60,13 @@ public class ButtonListeners {
 		CallBack callback = new CallBack() {
 
 			public void handleResponse(JSONObject response) {
-				context.toggleSearchFlights(null);
-				//TextView prueba = (TextView) context.findViewById(R.id.prueba);
-//				prueba.setText(response);
+				Log.d("piola", response.toString());
+				if (response.optBoolean("review")) {
+					Toast.makeText(context, R.string.review_success, Toast.LENGTH_SHORT).show();
+					context.setMain();
+				}
+				else
+					Toast.makeText(context, R.string.review_error, Toast.LENGTH_SHORT).show();
 			}
 		};
 		context.getReceiver().setCallBack(callback);
@@ -80,12 +84,14 @@ public class ButtonListeners {
 				FlightStatus initialFlightStatus = null;
 				try {
 					initialFlightStatus = new FlightStatus(response.getJSONObject("status"));
-				} catch (JSONException e) {
-					Log.d("json", "invalid status");
+					Toast.makeText(context, R.string.fav_success, Toast.LENGTH_SHORT).show();
+					FavouriteFlight flight = new FavouriteFlight(favFlight, initialFlightStatus);
+					getAlerts(flight);
+					context.addFavouriteFlight(flight);
+					context.setMain();
+				} catch (Exception e) {
+					Toast.makeText(context, R.string.fav_error, Toast.LENGTH_SHORT).show();
 				}
-				FavouriteFlight flight = new FavouriteFlight(favFlight, initialFlightStatus);
-				getAlerts(flight);
-				context.addFavouriteFlight(flight);
 			}
 		};
 		context.getReceiver().setCallBack(callback);

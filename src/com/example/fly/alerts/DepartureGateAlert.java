@@ -11,5 +11,8 @@ public class DepartureGateAlert implements Alert {
 	public AlertNotification getNotification(FlightStatus newStatus) {
 		return new AlertNotification("La nueva puerta de embarque es: " + newStatus.getDepartureGate());
 	}
-
+	
+	public String getName() {
+		return "DepartureGate";
+	}
 }

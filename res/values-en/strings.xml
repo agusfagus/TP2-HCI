@@ -43,6 +43,8 @@
     <string name="departure_time">Change in departure time</string>
     <string name="arrival_time">Change in arrival time</string>
     <string name="which_notifications">¿Which notifications would you like to receive?</string>
+    <string name="fav_success">Flight succesfully added</string>
+    <string name="fav_error">Invalid flight data. Please try again</string>
 
     <!-- Review activity -->
 
@@ -56,6 +58,8 @@
     <string name="comfort">General comfort</string>
     <string name="quality_price">Quality/price ratio</string>
     <string name="recommend">¿Would you recommend this airline?</string>
+    <string name="review_success">The review has been sent</string>
+    <string name="review_error">Invalid flight data. Please try again</string>
     <string name="title_activity_main_fragment">MainFragment</string>
 
 </resources>

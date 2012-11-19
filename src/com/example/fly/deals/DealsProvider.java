@@ -20,7 +20,6 @@ public class DealsProvider {
 		List<Deal> list = getDealsFromJSON(json);
 		List<Map<String, String>> dealsMap = new ArrayList<Map<String, String>>();
 		for (Deal d : list) {
-			Log.d(d.getCityName(), d.getPrice());
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put(fields[0], d.getCityName());
 			map.put(fields[1], d.getPrice());
@@ -34,23 +33,25 @@ public class DealsProvider {
 	}
 	
 	private List<Deal> getDealsFromJSON(JSONObject json) {
-		JSONArray deals = new JSONArray();;
+		JSONArray deals = new JSONArray();
+		List<Deal> dealList = new LinkedList<Deal> ();
 		try {
 			deals = json.getJSONArray("deals");
+			int amount = deals.length();
+			
+			for (int i = 0 ; i < amount ; i++) {
+				try {
+					String cityName = deals.getJSONObject(i).getString("cityName");
+					String price = ((Double)deals.getJSONObject(i).getDouble("price")).toString() + " USD";
+					dealList.add(new Deal(cityName, price));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 		} catch (JSONException e) {
 			Log.d("json", "error en la respuesta");
-		}
-		int amount = deals.length();
-		List<Deal> dealList = new LinkedList<Deal> ();
-		for (int i = 0 ; i < amount ; i++) {
-			try {
-				String cityName = deals.getJSONObject(i).getString("cityName");
-				String price = ((Double)deals.getJSONObject(i).getDouble("price")).toString() + " USD";
-				dealList.add(new Deal(cityName, price));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return dealList;
 	}

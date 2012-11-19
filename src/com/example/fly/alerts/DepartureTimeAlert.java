@@ -12,4 +12,7 @@ public class DepartureTimeAlert implements Alert {
 		return new AlertNotification("El nuevo horario de salida es: " + newStatus.getDepartureTime());
 	}
 
+	public String getName() {
+		return "DepartureTime";
+	}
 }

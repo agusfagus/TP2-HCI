@@ -1,8 +1,12 @@
 package com.example.fly.mobile;
 
+import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.fly.R;
 import com.example.fly.alerts.AlertNotification;
@@ -22,11 +27,13 @@ import com.example.fly.utils.Favourites;
 import com.example.fly.utils.FlightReview;
 import com.example.fly.utils.FragmentTabHandler;
 
+@SuppressLint({ "WorldWriteableFiles", "WorldReadableFiles" })
 public class SplashActivity extends FragmentActivity {
 
 	//private String TAG = getClass().getSimpleName();
 	private FragmentTabHandler tabHandler;
 	private ButtonListeners buttonListeners;
+	public static final String storageFile = "storageFile";
 	public static Favourites favourites = new Favourites();
 	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()) {
 
@@ -41,7 +48,7 @@ public class SplashActivity extends FragmentActivity {
 				try {
 					response = new JSONObject(responseString);
 				} catch (JSONException e) {
-					Log.d("JSON", "Todo mal");
+					Log.wtf("Ehmmm", "no deberias estar aca");
 				}
     			callback.handleResponse(response);
     			
@@ -68,6 +75,12 @@ public class SplashActivity extends FragmentActivity {
         NotificationIntent intent = new NotificationIntent(this);
         startService(intent);
       //  new Initializer(this);
+        try {
+			retreiveData();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public FragmentTabHandler getFragmentHandler() {
@@ -105,21 +118,32 @@ public class SplashActivity extends FragmentActivity {
 		FlightReview review = null;
 		try {
 			review = new FlightReview(this);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			buttonListeners.submitReview(review);
+		} catch (Exception e) {
+			Toast.makeText(this, R.string.review_error, Toast.LENGTH_SHORT).show();
 		}
-		buttonListeners.submitReview(review);
 	}
     
     public void addFavouriteFlight (View view) {
-    	EditText airline = (EditText) findViewById(R.id.fav_airline);
-    	EditText flightNum = (EditText) findViewById(R.id.fav_flight_number);
-    	buttonListeners.addFavouriteFlight(airline.getText().toString(), flightNum.getText().toString());
+    	try {
+	    	EditText airline = (EditText) findViewById(R.id.fav_airline);
+	    	EditText flightNum = (EditText) findViewById(R.id.fav_flight_number);
+	    	buttonListeners.addFavouriteFlight(airline.getText().toString(), flightNum.getText().toString());
+    	} catch (Exception e) {
+    		Toast.makeText(this, R.string.fav_error, Toast.LENGTH_SHORT).show();
+    	}
     }
     
     public void addFavouriteFlight (FavouriteFlight newFav) {
     	favourites.put(newFav);
+    	Editor editor = getSharedPreferences(storageFile, MODE_WORLD_WRITEABLE).edit();
+    	editor.putString(newFav.getFlight().getNumber() + newFav.getFlight().getAirline(), 
+    			newFav.getStatus().toString());
+    	editor.commit();
+    }
+    
+    public void addFavouriteFlight (JSONObject newFav) throws JSONException {
+    	favourites.put(new FavouriteFlight(newFav));
     }
 	
 	public void toggleSearchFlights(View view) {
@@ -136,5 +160,17 @@ public class SplashActivity extends FragmentActivity {
 	
 	private void selectFragment(int index) {
 		buttonListeners.selectFragment(this.tabHandler, getActionBar().getTabAt(index));
+	}
+	
+	public void setMain() {
+		this.tabHandler.selectMain();
+	}
+	
+	private void retreiveData() throws JSONException {
+		Map<String, ?> stored = getSharedPreferences(storageFile, MODE_WORLD_READABLE).getAll();
+		for (Object value : stored.values()){
+			JSONObject json = new JSONObject((String)value);
+			addFavouriteFlight(json);
+		}
 	}
 }

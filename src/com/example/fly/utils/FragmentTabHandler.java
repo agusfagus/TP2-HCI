@@ -29,7 +29,12 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 	public FragmentTabHandler(Activity contextActivity) {
 		this.contextActivity = (SplashActivity)contextActivity;
 		initialize();
+		selectMain();
+	}
+	
+	public void selectMain() {
 		toggle(mainFragment.instance);
+		this.contextActivity.getActionBar().selectTab(null);
 	}
 	
 	public void onTabReselected(Tab tab, FragmentTransaction ft) { }

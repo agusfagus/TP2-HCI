@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -20,7 +19,7 @@ public class FlightReview {
 	
 	private List<NameValuePair> params = new LinkedList<NameValuePair> ();
 
-	public FlightReview(Activity context) throws JSONException {
+	public FlightReview(Activity context) throws Exception {
 		JSONObject json = new JSONObject();
 		EditText airlineView = (EditText) context.findViewById(R.id.airline);
 		String airline = airlineView.getText().toString();

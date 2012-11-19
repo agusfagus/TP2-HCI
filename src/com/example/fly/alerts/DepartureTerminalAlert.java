@@ -12,4 +12,7 @@ public class DepartureTerminalAlert implements Alert {
 		return new AlertNotification("La nueva terminal de embarque es la: " + newStatus.getDepartureTerminal());
 	}
 
+	public String getName() {
+		return "DepartureTerminal";
+	}
 }
