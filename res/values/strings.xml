@@ -27,6 +27,7 @@
     <string name="title_activity_search_flight">Busca tu vuelo</string>
     <string name="edit_from">Ciudad de origen</string>
     <string name="search_deals">Buscar</string>
+    <string name="deals_error">Ciudad invalida</string>
 
     <!-- Notification activity -->
 
@@ -42,7 +43,7 @@
     <string name="baggage_gate">Cambio puerta de equipaje</string>
     <string name="departure_time">Cambio horario de partida</string>
     <string name="arrival_time">Cambio horario de arribo</string>
-    <string name="which_notifications">¿Qué notificaciones desearía recibir?</string>
+    <string name="which_notifications">Notificaciones</string>
     <string name="fav_success">Vuelo agregado correctamente</string>
     <string name="fav_error">Datos del vuelo incorrectos. Intente nuevamente</string>
 

@@ -7,14 +7,12 @@ import org.json.JSONObject;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
 import com.example.fly.alerts.AlertNotification;
 import com.example.fly.api.ApiIntent;
 import com.example.fly.api.ApiResultReceiver;
-import com.example.fly.api.ApiService;
 import com.example.fly.mobile.SplashActivity;
 import com.example.fly.utils.CallBack;
 import com.example.fly.utils.FavouriteFlight;
@@ -24,30 +22,7 @@ public class NotificationService extends IntentService {
 
 	private static long interval = 15000;
 	private Favourites favourites;	
-	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()) {
-
-		@Override
-    	protected void onReceiveResult(int resultCode, Bundle resultData) {
-    		super.onReceiveResult(resultCode, resultData);
-    		if (resultCode == ApiService.STATUS_OK) {
-
-    			String responseString = (String) resultData
-    					.getSerializable("return");
-    			JSONObject response = new JSONObject();
-				try {
-					response = new JSONObject(responseString);
-				} catch (JSONException e) {
-					Log.d("JSON", "Todo mal");
-				}
-    			callback.handleResponse(response);
-    			
-    		} else if (resultCode == ApiService.STATUS_CONNECTION_ERROR) {
-    			Log.d("Api Service", "Connection error.");
-    		} else {
-    			Log.d("Api Service", "Unknown error.");
-    		}
-    	}
-	};
+	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler());
 	
 	public NotificationService() {
 		super("NotificationService");

@@ -7,14 +7,13 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical">
 	    
-	    <TextView 
-	        android:id="@+id/airline_tag"
-	        android:layout_width="250dp"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:layout_marginTop="@dimen/review_margin"
-	        android:textSize="20dp"
-	        android:text="@string/airline" />
+	    <TextView
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/which_notifications"
+	    android:layout_marginTop="25dp"
+	    android:layout_gravity="center"
+	    android:textSize="25dp" />
 	    
 		<AutoCompleteTextView
 	        android:id="@+id/airline"
@@ -27,15 +26,6 @@
 	        
 	        <requestFocus />
 		</AutoCompleteTextView>
-	    
-		<TextView 
-	        android:id="@+id/flight_num_tag"
-	        android:layout_width="250dp"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center"
-	        android:layout_marginTop="@dimen/review_margin"
-	        android:textSize="20dp"
-	        android:text="@string/flight_num" />
 		
 	    <EditText
 	        android:id="@+id/flight_num"

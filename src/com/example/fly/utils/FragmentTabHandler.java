@@ -3,9 +3,9 @@ package com.example.fly.utils;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
 
 import com.example.fly.R;
 import com.example.fly.mobile.MainFragment;
@@ -50,13 +50,14 @@ public class FragmentTabHandler implements ActionBar.TabListener {
 	private void initialize() {
 		final ActionBar actionBar = this.contextActivity.getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		actionBar.setDisplayHomeAsUpEnabled(true);
 		for (int i = 0 ; i < fragmentList.length ; i++)
 			actionBar.addTab(actionBar.newTab().setText(fragmentList[i].stringId).setTabListener(this));
 	}
 	
 	public void toggle(Fragment newFragment) {
-    	FragmentManager fManager = this.contextActivity.getFragmentManager();
-    	fManager.beginTransaction().replace(R.id.container, newFragment).commit();
+    	FragmentManager fManager = this.contextActivity.getSupportFragmentManager();
+    	fManager.beginTransaction().replace(R.id.container, newFragment).addToBackStack(null).commit();
     }
 	
 	private class FragmentContainer {

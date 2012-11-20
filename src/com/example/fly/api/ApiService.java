@@ -68,8 +68,8 @@ public class ApiService extends IntentService{
 	private void callMethod(String url, ResultReceiver receiver, 
 			Bundle b) throws ClientProtocolException, IOException, JSONException {
 		final DefaultHttpClient client = new DefaultHttpClient();
+		Log.d("url", url);
 		HttpGet get = new HttpGet(url);
-		Log.d("luki", url);
 		final HttpResponse response = client.execute(get);
 		if ( response.getStatusLine().getStatusCode() != 200 ) {
 			throw new IllegalArgumentException(response.getStatusLine().toString());

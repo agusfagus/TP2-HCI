@@ -1,43 +1,44 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:orientation="vertical" >
-
-    <ImageView
-        android:id="@+id/logoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/logo_large" />
-    <!--   -->
-<!-- 	android:layout_marginTop="60dp" 
-		android:layout_gravity="center"
-		android:layout_width="250dp"-->
-
-    <Button
-        android:id="@+id/flight_search"
-        android:layout_marginTop="60dp" 
-        android:onClick="toggleSearchFlights"
-        android:text="@string/flight_search"
-        style="@style/button_style_large" />
-    
-    <Button
-        android:id="@+id/review"
-        android:layout_marginTop="0dp"
-        android:text="@string/review"
-        android:onClick="toggleReviews"
-        style="@style/button_style_large" />
-    
-    <Button
-        android:id="@+id/notifications"
-        android:layout_marginTop="0dp"
-        android:text="@string/notifications"
-        android:onClick="toggleNotifications"
-        style="@style/button_style_large" />
-
-</LinearLayout>
+    android:layout_height="wrap_content">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	
+	    <ImageView
+	        android:id="@+id/logoView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="50dp"
+	        android:contentDescription="@string/logo"
+	        android:src="@drawable/logo_large" />
+	<!-- 	android:layout_marginTop="60dp" 
+			android:layout_gravity="center"
+			android:layout_width="250dp"-->
+	
+	    <Button
+	        android:id="@+id/flight_search"
+	        android:layout_marginTop="60dp" 
+	        android:onClick="toggleSearchFlights"
+	        android:text="@string/flight_search"
+	        style="@style/button_style" />
+	    
+	    <Button
+	        android:id="@+id/review"
+	        android:layout_marginTop="0dp"
+	        android:text="@string/review"
+	        android:onClick="toggleReviews"
+	        style="@style/button_style" />
+	    
+	    <Button
+	        android:id="@+id/notifications"
+	        android:layout_marginTop="0dp"
+	        android:text="@string/notifications"
+	        android:onClick="toggleNotifications"
+	        style="@style/button_style" />
+	
+	</LinearLayout>
+</ScrollView>

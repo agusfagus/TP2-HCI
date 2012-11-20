@@ -4,7 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <EditText
+    <TextView
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/title_activity_search_flight"
+	    android:layout_marginTop="20dp"
+	    android:layout_gravity="center"
+	    android:textSize="25dp" />
+    
+    <AutoCompleteTextView
         android:id="@+id/from"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -13,20 +21,13 @@
         android:layout_marginBottom="40dp"
         android:inputType="text"
         android:hint="@string/edit_from">
-	</EditText>
+        <requestFocus />
+	</AutoCompleteTextView>
 	
     <Button
         android:id="@+id/search_deals"
         android:text="@string/search_deals"
         android:onClick="getDeals"
     	style="@style/button_style" />
-    
-    
-    <TextView
-        android:id="@+id/prueba"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp" >
-    </TextView>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,9 +20,10 @@ import android.widget.Toast;
 import com.example.fly.R;
 import com.example.fly.alerts.AlertNotification;
 import com.example.fly.api.ApiResultReceiver;
-import com.example.fly.api.ApiService;
 import com.example.fly.status.NotificationIntent;
+import com.example.fly.utils.Airlines;
 import com.example.fly.utils.ButtonListeners;
+import com.example.fly.utils.Cities;
 import com.example.fly.utils.FavouriteFlight;
 import com.example.fly.utils.Favourites;
 import com.example.fly.utils.FlightReview;
@@ -35,30 +37,9 @@ public class SplashActivity extends FragmentActivity {
 	private ButtonListeners buttonListeners;
 	public static final String storageFile = "storageFile";
 	public static Favourites favourites = new Favourites();
-	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()) {
-
-		@Override
-    	protected void onReceiveResult(int resultCode, Bundle resultData) {
-    		super.onReceiveResult(resultCode, resultData);
-    		if (resultCode == ApiService.STATUS_OK) {
-
-    			String responseString = (String) resultData
-    					.getSerializable("return");
-    			JSONObject response = new JSONObject();
-				try {
-					response = new JSONObject(responseString);
-				} catch (JSONException e) {
-					Log.wtf("Ehmmm", "no deberias estar aca");
-				}
-    			callback.handleResponse(response);
-    			
-    		} else if (resultCode == ApiService.STATUS_CONNECTION_ERROR) {
-    			Log.d("Api Service", "Connection error.");
-    		} else {
-    			Log.d("Api Service", "Unknown error.");
-    		}
-    	}
-	};
+	private Cities cities = new Cities();
+	private Airlines airlines = new Airlines();
+	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()); 
 	
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 	
@@ -67,18 +48,16 @@ public class SplashActivity extends FragmentActivity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.tabHandler = new FragmentTabHandler(this);
-        this.buttonListeners = new ButtonListeners(this);
-        AlertNotification.context = this;
-        NotificationIntent intent = new NotificationIntent(this);
-        startService(intent);
-      //  new Initializer(this);
         try {
 			retreiveData();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+        	this.tabHandler = new FragmentTabHandler(this);
+            this.buttonListeners = new ButtonListeners(this);
+            AlertNotification.context = this;
+            NotificationIntent intent = new NotificationIntent(this);
+            startService(intent);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
@@ -90,14 +69,32 @@ public class SplashActivity extends FragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
-        //SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         return true;
     }
     
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
-    	if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM))
-    		getActionBar().setSelectedNavigationItem(savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+    	if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)){
+    		try {
+    			getActionBar().setSelectedNavigationItem(savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+    		} catch (Exception e) {
+    			setMain();
+    		}
+    	}
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	Log.d("aa", String.valueOf(item.getItemId()));
+    	switch (item.getItemId()) {
+	    	case android.R.id.home:
+	    		Log.d("hola", "hola");
+		    	getSupportFragmentManager().popBackStack();
+		    	getSupportFragmentManager().executePendingTransactions();
+		    	getActionBar().selectTab(null);
+		    	break;
+    	}
+    	return true;
     }
     
     @Override
@@ -111,7 +108,12 @@ public class SplashActivity extends FragmentActivity {
     
 	public void getDeals (View view) {
 		EditText from = (EditText)findViewById(R.id.from);
-		buttonListeners.getDeals(from.getText().toString());
+		try {
+			String cityName = cities.getId(from.getText().toString());
+			buttonListeners.getDeals(cityName);
+		} catch (Exception e){
+			Toast.makeText(this, R.string.deals_error, Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	public void submitReview (View view) {
@@ -128,7 +130,8 @@ public class SplashActivity extends FragmentActivity {
     	try {
 	    	EditText airline = (EditText) findViewById(R.id.fav_airline);
 	    	EditText flightNum = (EditText) findViewById(R.id.fav_flight_number);
-	    	buttonListeners.addFavouriteFlight(airline.getText().toString(), flightNum.getText().toString());
+	    	String airlineId = airlines.getId(airline.getText().toString());
+	    	buttonListeners.addFavouriteFlight(airlineId, flightNum.getText().toString());
     	} catch (Exception e) {
     		Toast.makeText(this, R.string.fav_error, Toast.LENGTH_SHORT).show();
     	}
@@ -164,6 +167,14 @@ public class SplashActivity extends FragmentActivity {
 	
 	public void setMain() {
 		this.tabHandler.selectMain();
+	}
+	
+	public Cities getCities() {
+		return this.cities;
+	}
+	
+	public Airlines getAirlines() {
+		return this.airlines;
 	}
 	
 	private void retreiveData() throws JSONException {

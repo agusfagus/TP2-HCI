@@ -13,21 +13,21 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/which_notifications"
-	    android:layout_marginTop="5dp"
+	    android:layout_marginTop="25dp"
 	    android:layout_gravity="center"
-	    android:textSize="15dp" />
+	    android:textSize="25dp" />
     
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/fav_airline"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:hint="@string/fav_airline_tag"
         android:inputType="text" >
 
         <requestFocus />
-    </EditText>
+    </AutoCompleteTextView>
 
     <EditText
         android:id="@+id/fav_flight_number"

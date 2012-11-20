@@ -27,6 +27,7 @@
     <string name="title_activity_search_flight">Search flight</string>
     <string name="edit_from">From</string>
     <string name="search_deals">Search</string>
+    <string name="deals_error">Invalid city</string>
 
     <!-- Notification activity -->
 
@@ -42,7 +43,7 @@
     <string name="baggage_gate">Change in baggage claim gate</string>
     <string name="departure_time">Change in departure time</string>
     <string name="arrival_time">Change in arrival time</string>
-    <string name="which_notifications">¿Which notifications would you like to receive?</string>
+    <string name="which_notifications">Notifications</string>
     <string name="fav_success">Flight succesfully added</string>
     <string name="fav_error">Invalid flight data. Please try again</string>
 

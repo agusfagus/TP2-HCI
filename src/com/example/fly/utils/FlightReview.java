@@ -7,55 +7,45 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.Switch;
 
 import com.example.fly.R;
+import com.example.fly.mobile.SplashActivity;
 	
 public class FlightReview {
 	
 	private List<NameValuePair> params = new LinkedList<NameValuePair> ();
+	private SplashActivity context;
+	private Airlines airlines;
 
-	public FlightReview(Activity context) throws Exception {
+	public FlightReview(SplashActivity context) throws Exception {
 		JSONObject json = new JSONObject();
+		this.context = context;
+		this.airlines = this.context.getAirlines();
+		
 		EditText airlineView = (EditText) context.findViewById(R.id.airline);
 		String airline = airlineView.getText().toString();
-		json.put("airlineId", airline);
+		json.put("airlineId", airlines.getId(airline));
 		
 		EditText flightIdView = (EditText) context.findViewById(R.id.flight_num);
 		String flightId = flightIdView.getText().toString();
 		json.put("flightNumber", Integer.valueOf(flightId));
 		
-		RatingBar friendlinessView = (RatingBar) context.findViewById(R.id.friendliness);
-		Integer friendliness = (int)(friendlinessView.getRating() * 2);
-		json.put("friendlinessRating", friendliness);
+		json.put("friendlinessRating", getScore(R.id.friendliness));
 		
-		RatingBar foodView = (RatingBar) context.findViewById(R.id.food);
-		Integer food = (int)(foodView.getRating() * 2);
-		json.put("foodRating", food);
+		json.put("foodRating", getScore(R.id.food));
 		
-		RatingBar punctualityView = (RatingBar) context.findViewById(R.id.punctuality);
-		Integer punctuality = (int)(punctualityView.getRating() * 2);
-		json.put("punctualityRating", punctuality);
+		json.put("punctualityRating", getScore(R.id.punctuality));
+				
+		json.put("mileageProgramRating", getScore(R.id.mileage));
 		
-		RatingBar mileageView = (RatingBar) context.findViewById(R.id.mileage);
-		Integer mileage = (int)(mileageView.getRating() * 2);
-		json.put("mileageProgramRating", mileage);
+		json.put("comfortRating", getScore(R.id.comfort));
 		
-		RatingBar comfortView = (RatingBar) context.findViewById(R.id.comfort);
-		Integer comfort = (int)(comfortView.getRating() * 2);
-		json.put("comfortRating", comfort);
+		json.put("qualityPriceRating", getScore(R.id.quality_price));
 		
-		RatingBar qualityPriceView = (RatingBar) context.findViewById(R.id.quality_price);
-		Integer qualityPrice = (int)(qualityPriceView.getRating() * 2);
-		json.put("qualityPriceRating", qualityPrice);
-		
-		Switch yesRecommendView = (Switch) context.findViewById(R.id.recommend);
-		boolean yesRecommend = yesRecommendView.isChecked();
-		json.put("yesRecommend", yesRecommend);
+		json.put("yesRecommend", getScore(R.id.recommend));
 		
 		json.put("comments", "");
 		Log.d("json", json.toString());
@@ -66,4 +56,8 @@ public class FlightReview {
 		return this.params;
 	}
 	
+	private int getScore(int id) {
+		RatingBar view = (RatingBar)context.findViewById(R.id.mileage);
+		return Math.round((view.getRating()/5)*8 + 1);
+	}
 }
