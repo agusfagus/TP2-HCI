@@ -20,7 +20,7 @@ import com.example.fly.utils.Favourites;
 
 public class NotificationService extends IntentService {
 
-	private static long interval = 15000;
+	private static long seconds = 300;
 	private Favourites favourites;	
 	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler());
 	
@@ -40,7 +40,7 @@ public class NotificationService extends IntentService {
 		while (true) {
 			try {
 				synchronized (this) {
-					wait(interval);
+					wait(seconds * 1000);
 					for (FavouriteFlight f : this.favourites.getList()) {
 							Log.d("service", f.getFlight().getNumber());
 							checkStatus(f);

@@ -18,4 +18,11 @@ public class Airlines {
 	public String[] getAirlineNames() {
 		return (String[])this.airlines.keySet().toArray();
 	}
+	
+	public String getName(String id) {
+		for (String n : airlines.keySet())
+			if (airlines.get(n).equals(id))
+				return n;
+		return id;
+	}
 }

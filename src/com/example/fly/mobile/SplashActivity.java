@@ -36,7 +36,7 @@ public class SplashActivity extends FragmentActivity {
 	private FragmentTabHandler tabHandler;
 	private ButtonListeners buttonListeners;
 	public static final String storageFile = "storageFile";
-	public static Favourites favourites = new Favourites();
+	public static Favourites favourites;
 	private Cities cities = new Cities();
 	private Airlines airlines = new Airlines();
 	private ApiResultReceiver receiver = new ApiResultReceiver(new Handler()); 
@@ -51,7 +51,7 @@ public class SplashActivity extends FragmentActivity {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
-			retreiveData();
+			retrieveData();
         	this.tabHandler = new FragmentTabHandler(this);
             this.buttonListeners = new ButtonListeners(this);
             AlertNotification.context = this;
@@ -93,6 +93,10 @@ public class SplashActivity extends FragmentActivity {
 		    	getSupportFragmentManager().executePendingTransactions();
 		    	getActionBar().selectTab(null);
 		    	break;
+	    	case R.id.menu_settings:
+	    		SettingsFragment sFragment = new SettingsFragment();
+	    		sFragment.setData(favourites, this);
+	    		tabHandler.toggle(sFragment);
     	}
     	return true;
     }
@@ -177,8 +181,9 @@ public class SplashActivity extends FragmentActivity {
 		return this.airlines;
 	}
 	
-	private void retreiveData() throws JSONException {
+	private void retrieveData() throws JSONException {
 		Map<String, ?> stored = getSharedPreferences(storageFile, MODE_WORLD_READABLE).getAll();
+		favourites = new Favourites(); 
 		for (Object value : stored.values()){
 			JSONObject json = new JSONObject((String)value);
 			addFavouriteFlight(json);

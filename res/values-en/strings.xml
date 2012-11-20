@@ -6,7 +6,8 @@
     <string name="deals_tab">Deals</string>
     <string name="reviews_tab">Reviews</string>
     <string name="notifications_tab">Notifications</string>
-
+	<string name="unexpected_error">Ha ocurrido un error inesperado. Por favor vuela a intentarlo o re-instale la aplicación</string>
+    
     <!-- Main activity -->
 
     <string name="flight_search">Search flight</string>

@@ -6,6 +6,7 @@
     <string name="deals_tab">Promociones</string>
     <string name="reviews_tab">Opiniones</string>
     <string name="notifications_tab">Notificaciones</string>
+    <string name="unexpected_error">Ha ocurrido un error inesperado. Por favor vuela a intentarlo o re-instale la aplicación</string>
 
     <!-- Main activity -->
 
